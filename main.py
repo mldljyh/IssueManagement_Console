@@ -1,7 +1,4 @@
-import datetime
 import os
-
-import requests
 
 from issuemanagement.auth import AuthManager
 from issuemanagement.project import ProjectManager
