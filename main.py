@@ -146,7 +146,7 @@ def project_screen(session, project_id):
         elif choice == '4':
             session.issue_manager.search_issuesbyNL(project_id)
         elif choice == '5':
-            session.statistics_manager.analyze_issue_statistics()
+            session.statistics_manager.analyze_issue_statistics(project_id)
         elif choice == '6':
             break
         else:
