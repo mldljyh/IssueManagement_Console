@@ -37,7 +37,8 @@ def clear_console():
     """
     콘솔 화면을 지운다.(화면 초기화용)
     """
-    os.system('cls' if os.name == 'nt' else 'clear')
+    # 기존 출력 내용을 지우지 않고 화면을 위로 스크롤하여 새로운 출력을 시작
+    print("\033c", end="")
 
 def login(session):
     """
@@ -79,6 +80,7 @@ def manage_projects(session):
     프로젝트 생성 및 삭제 기능을 제공하는 화면
     """
     while True:
+        clear_console()
         print("\n--- 프로젝트 관리 ---")
         print("1. 프로젝트 생성")
         print("2. 프로젝트 삭제")
@@ -114,6 +116,7 @@ def project_screen(session, project_id):
     선택한 프로젝트 내에서 이슈를 관리하는 화면
     """
     while True:
+        clear_console()
         print("\n--- 프로젝트 화면 ---")
         print("1. 이슈 목록보기")
         print("2. 이슈 등록")
@@ -125,6 +128,7 @@ def project_screen(session, project_id):
 
         if choice == '1':
             while True:
+                clear_console()
                 issue_id = session.issue_manager.select_issue(project_id)
                 if issue_id is None:
                     break

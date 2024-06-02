@@ -145,3 +145,4 @@ class CommentManager:
                 return choice
             else:
                 print("잘못된 입력입니다.")
+            print("\033c", end="")

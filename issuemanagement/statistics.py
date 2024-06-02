@@ -203,6 +203,30 @@ class StatisticsManager:
             plt.tight_layout()
             plt.show()
 
+
+    def get_issues_per_day_and_priority_in_week_chart(self):
+        """
+        우선순위별 일주일 간 이슈 수를 꺾은선 그래프로 표시한다.
+        """
+        priority = input(
+            "이슈 우선순위 (BLOCKER, CRITICAL, MAJOR, MINOR, TRIVIAL): "
+        ).upper()
+        data = self._request_statistics_data(
+            f'issuesPerDayAndPriorityInWeek/{priority}'
+        )
+        if data:
+            days = list(data.keys())
+            counts = list(data.values())
+
+            plt.figure(figsize=(10, 5))
+            plt.plot(days, counts, marker='o')
+            plt.xlabel('Day')
+            plt.ylabel('Number of Issues')
+            plt.title(f'Number of Issues in a Week (Priority: {priority})')
+            plt.xticks(rotation=45, ha='right')
+            plt.tight_layout()
+            plt.show()
+
     def get_issues_per_priority_in_month_chart(self):
         """
         이번 달 우선순위별 이슈 수를 파이 그래프로 표시한다.
@@ -265,3 +289,5 @@ class StatisticsManager:
             plt.ylim(0, max_issues * 1.5) 
 
             plt.show()
+
+        

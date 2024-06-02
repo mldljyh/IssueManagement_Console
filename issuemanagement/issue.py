@@ -232,9 +232,10 @@ class IssueManager:
                     devs = response.json()
                     print("개발자 목록:")
                     for dev in devs:
-                        print(f'ID: {dev["id"]}, 이름: {dev["username"]}')
-                    assignee_id = int(input("담당자 ID를 선택해주세요: "))
-                    issue["assigneeUsername"] = assignee_id
+                        print(f'이름: {dev["username"]}')
+                    assignee_name = input("담당자를 선택해주세요: ")
+                    issue["assigneeUsername"] = assignee_name
+                    issue['status'] = 'ASSIGNED'
                 else:
                     print("개발자 목록을 불러오는 데 실패했습니다.")
                 break

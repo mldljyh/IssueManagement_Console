@@ -20,6 +20,6 @@ class RecommendationManager:
             recommended_assignees = response.json()
             print("추천 담당자:")
             for i, assignee in enumerate(recommended_assignees):
-                print(f"  {i+1}. {assignee['username']} (ID: {assignee['id']})")
+                print(f"  {i+1}. {assignee['username']}")
         else:
             print("담당자 추천에 실패했습니다.")
